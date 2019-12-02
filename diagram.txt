@@ -1,0 +1,38 @@
+class AnalizerSrc {
+    - String[] textClasses
+    - String[] names
+    + AnalizerSrc(String[] textClasses, String[] names)
+    + String[] getResult ()
+    + String getCoupling(String[] names, String[] textClassesFiltered)
+                 if (text.contains(s) && !text.contains("class " + s) && !text.contains("interface " + s))
+    - String replaceReservedSymbols(String text)
+    - String replaceDoubleEnter(String text)
+    - String replaceMethods(String text)
+            if (s.matches("(\\s)*\\#.*") || s.matches("(\\s)*\\+.*") || s.matches("(\\s)*\\-.*") || s.contains("class ") || s.contains("interface "))
+}
+class Controller {
+    - ScanSrc src
+    - AnalizerSrc analizer
+    - Result result
+    + static void main(String[] args) throws IOException {
+    - void start(String pathIn, String pathOut) throws IOException {
+}
+class Result {
+    - String[] textClasses
+    + Result(String[] textClasses)
+    + void toConsole()
+    + void toFile(String path)
+}
+class ScanSrc {
+    + String getSrcPath()
+    - String srcPath
+    - String[] textClasses
+    + ScanSrc(String srcPath)
+    + String[] getTextClasses() throws IOException {
+    + String[] getNames()
+    - String arrayListToString(List<String> list)
+}
+AnalizerSrc <-- Controller
+Result <-- AnalizerSrc
+Result <-- Controller
+ScanSrc <-- Controller

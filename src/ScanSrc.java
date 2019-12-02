@@ -20,7 +20,8 @@ class ScanSrc {
 
     public String[] getTextClasses() throws IOException {
         Path path = Paths.get(srcPath);
-        textClasses = new String[path.getNameCount()+1];
+        int len = path.toFile().list().length;
+        textClasses = new String[len];
         int i = 0;
         for (String fileName: path.toFile().list()) {
             List<String> text = Files.readAllLines(Paths.get(path.toAbsolutePath() + "\\" + fileName));
